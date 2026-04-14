@@ -1,16 +1,15 @@
-import sinon from 'sinon';
-import { assert, assertEqual } from 'kixx-assert';
+import { assert, assertEqual } from '../../deps.js';
 import { describe } from '../../mod.js';
 import EventEmitter from '../../lib/event-emitter.js';
-import { assertThrows } from '../helpers.js';
+import { assertThrows, spy } from '../helpers.js';
 
 
 describe('EventEmitter#on()', ({ it }) => {
 
     it('calls multiple handlers in the order they were registered', () => {
         const emitter = new EventEmitter();
-        const spy1 = sinon.spy();
-        const spy2 = sinon.spy();
+        const spy1 = spy();
+        const spy2 = spy();
         emitter.on('test', spy1);
         emitter.on('test', spy2);
         emitter.emit('test', { test: 'test' });
@@ -21,8 +20,8 @@ describe('EventEmitter#on()', ({ it }) => {
 
     it('calls multiple handlers with the same event object', () => {
         const emitter = new EventEmitter();
-        const spy1 = sinon.spy();
-        const spy2 = sinon.spy();
+        const spy1 = spy();
+        const spy2 = spy();
         const eventObj = { test: 'test' };
 
         emitter.on('test', spy1);
@@ -37,18 +36,18 @@ describe('EventEmitter#on()', ({ it }) => {
 
     it('calls the same handler once times for multiple registrations', () => {
         const emitter = new EventEmitter();
-        const spy = sinon.spy();
+        const handlerSpy = spy();
         const eventObj = { test: 'test' };
-        emitter.on('test', spy);
-        emitter.on('test', spy);
+        emitter.on('test', handlerSpy);
+        emitter.on('test', handlerSpy);
         emitter.emit('test', eventObj);
-        assertEqual(1, spy.callCount);
-        assertEqual(eventObj, spy.firstCall.args[0]);
+        assertEqual(1, handlerSpy.callCount);
+        assertEqual(eventObj, handlerSpy.firstCall.args[0]);
     });
 
     it('throws an error if eventName is not a string', () => {
         const emitter = new EventEmitter();
-        const handler = sinon.spy();
+        const handler = spy();
 
         assertThrows(() => emitter.on(null, handler), 'Event name must be a string');
         assertThrows(() => emitter.on(undefined, handler), 'Event name must be a string');

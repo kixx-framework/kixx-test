@@ -1,7 +1,6 @@
-import sinon from 'sinon';
-import { assertEqual } from 'kixx-assert';
+import { assertEqual } from '../deps.js';
 import { describe, _rootBlocks } from '../mod.js';
-import { assertThrows } from './helpers.js';
+import { assertThrows, spy } from './helpers.js';
 
 import { DEFAULT_TIMEOUT } from '../lib/constants.js';
 
@@ -50,7 +49,7 @@ describe('describe() function', (block) => {
             assertEqual(DEFAULT_TIMEOUT, _rootBlocks[_rootBlocks.length - 1].timeout);
         });
         it('calls the provide block function', () => {
-            const fn = sinon.spy();
+            const fn = spy();
             describe('test', fn);
             assertEqual(1, fn.callCount);
         });

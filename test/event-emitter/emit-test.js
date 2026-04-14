@@ -1,14 +1,13 @@
-import sinon from 'sinon';
-import { assertEqual } from 'kixx-assert';
+import { assertEqual } from '../../deps.js';
 import { describe } from '../../mod.js';
 import EventEmitter from '../../lib/event-emitter.js';
-import { assertThrows } from '../helpers.js';
+import { assertThrows, spy } from '../helpers.js';
 
 describe('EventEmitter#emit()', ({ it }) => {
     it('calls all registered handlers with the event data', () => {
         const emitter = new EventEmitter();
-        const spy1 = sinon.spy();
-        const spy2 = sinon.spy();
+        const spy1 = spy();
+        const spy2 = spy();
         const eventObj = { test: 'test' };
 
         emitter.on('test', spy1);
@@ -23,10 +22,10 @@ describe('EventEmitter#emit()', ({ it }) => {
 
     it('does nothing if no handlers are registered for the event', () => {
         const emitter = new EventEmitter();
-        const spy = sinon.spy();
+        const handlerSpy = spy();
 
         emitter.emit('test', { test: 'test' });
-        assertEqual(0, spy.callCount);
+        assertEqual(0, handlerSpy.callCount);
     });
 
     it('throws an error if eventName is not a string', () => {
@@ -42,12 +41,12 @@ describe('EventEmitter#emit()', ({ it }) => {
 
     it('passes undefined event data when no event object is provided', () => {
         const emitter = new EventEmitter();
-        const spy = sinon.spy();
+        const handlerSpy = spy();
 
-        emitter.on('test', spy);
+        emitter.on('test', handlerSpy);
         emitter.emit('test');
 
-        assertEqual(1, spy.callCount);
-        assertEqual(undefined, spy.firstCall.args[0]);
+        assertEqual(1, handlerSpy.callCount);
+        assertEqual(undefined, handlerSpy.firstCall.args[0]);
     });
 });

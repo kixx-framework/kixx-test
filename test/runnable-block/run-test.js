@@ -1,15 +1,15 @@
-import { assertEqual } from 'kixx-assert';
+import { assertEqual } from '../../deps.js';
 import EventEmitter from '../../lib/event-emitter.js';
-import sinon from 'sinon';
 import { describe } from '../../mod.js';
+import { spy } from '../helpers.js';
 import RunnableBlock from '../../lib/runnable-block.js';
 
 
 describe('RunnableBlock#run() when disabled', ({ it }) => {
     it('does not call the setTimeout function when disabled', () => {
-        const mockSetTimeoutSpy = sinon.spy();
-        const mockClearTimeoutSpy = sinon.spy();
-        const blockFunctionSpy = sinon.spy();
+        const mockSetTimeoutSpy = spy();
+        const mockClearTimeoutSpy = spy();
+        const blockFunctionSpy = spy();
 
         const block = new RunnableBlock({
             type: 'test',
@@ -28,9 +28,9 @@ describe('RunnableBlock#run() when disabled', ({ it }) => {
     });
 
     it('does not call the fn function when disabled', () => {
-        const mockSetTimeoutSpy = sinon.spy();
-        const mockClearTimeoutSpy = sinon.spy();
-        const blockFunctionSpy = sinon.spy();
+        const mockSetTimeoutSpy = spy();
+        const mockClearTimeoutSpy = spy();
+        const blockFunctionSpy = spy();
 
         const block = new RunnableBlock({
             type: 'test',
@@ -50,9 +50,9 @@ describe('RunnableBlock#run() when disabled', ({ it }) => {
 
     it('sets the timeout with a custom timeout', async () => {
         const emitter = new EventEmitter();
-        const mockSetTimeoutSpy = sinon.spy();
-        const mockClearTimeoutSpy = sinon.spy();
-        const blockFunctionSpy = sinon.spy();
+        const mockSetTimeoutSpy = spy();
+        const mockClearTimeoutSpy = spy();
+        const blockFunctionSpy = spy();
 
         const block = new RunnableBlock({
             type: 'test',
@@ -74,15 +74,15 @@ describe('RunnableBlock#run() when disabled', ({ it }) => {
         const emitter = new EventEmitter();
 
         let flippedBit = false;
-        const blockFunctionSpy = sinon.spy(() => {
+        const blockFunctionSpy = spy(() => {
             return Promise.resolve(null).then(() => {
                 flippedBit = true;
             });
         });
 
         const timeoutHandle = {};
-        const mockSetTimeoutSpy = sinon.fake.returns(timeoutHandle);
-        const mockClearTimeoutSpy = sinon.spy();
+        const mockSetTimeoutSpy = spy(() => timeoutHandle);
+        const mockClearTimeoutSpy = spy();
 
         const block = new RunnableBlock({
             type: 'test',
@@ -106,14 +106,14 @@ describe('RunnableBlock#run() when disabled', ({ it }) => {
         const emitter = new EventEmitter();
 
         let flippedBit = false;
-        const blockFunctionSpy = sinon.spy((callback) => {
+        const blockFunctionSpy = spy((callback) => {
             setTimeout(callback, 10);
             flippedBit = true;
         });
 
         const timeoutHandle = {};
-        const mockSetTimeoutSpy = sinon.fake.returns(timeoutHandle);
-        const mockClearTimeoutSpy = sinon.spy();
+        const mockSetTimeoutSpy = spy(() => timeoutHandle);
+        const mockClearTimeoutSpy = spy();
 
         const block = new RunnableBlock({
             type: 'test',

@@ -1,4 +1,4 @@
-import { assertEqual } from 'kixx-assert';
+import { assertEqual } from '../../deps.js';
 import { describe } from '../../mod.js';
 import DescribeBlock from '../../lib/describe-block.js';
 import { assertThrows } from '../helpers.js';

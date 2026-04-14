@@ -1,4 +1,4 @@
-import { assertEqual } from 'kixx-assert';
+import { assertEqual } from '../../deps.js';
 import { describe } from '../../mod.js';
 import RunnableBlock from '../../lib/runnable-block.js';
 

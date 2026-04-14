@@ -1,4 +1,4 @@
-import { assert, assertEqual, assertNumberNotNaN } from 'kixx-assert';
+import { assert, assertEqual, assertNumberNotNaN } from '../../deps.js';
 import { describe } from '../../mod.js';
 import DescribeBlock from '../../lib/describe-block.js';
 import { DEFAULT_TIMEOUT } from '../../lib/constants.js';

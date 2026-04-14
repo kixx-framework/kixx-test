@@ -1,4 +1,4 @@
-import { assertEqual, assertNumberNotNaN } from 'kixx-assert';
+import { assertEqual, assertNumberNotNaN } from '../../deps.js';
 import { describe } from '../../mod.js';
 import RunnableBlock from '../../lib/runnable-block.js';
 import { DEFAULT_TIMEOUT } from '../../lib/constants.js';

@@ -1,8 +1,7 @@
-import { assertEqual } from 'kixx-assert';
-import sinon from 'sinon';
+import { assertEqual } from '../../deps.js';
 import { describe } from '../../mod.js';
 import DescribeBlock from '../../lib/describe-block.js';
-import { assertThrows } from '../helpers.js';
+import { assertThrows, spy } from '../helpers.js';
 
 
 describe('DescribeBlock#xit() and DescribeBlock#xdescribe()', ({ it }) => {
@@ -28,7 +27,7 @@ describe('DescribeBlock#xit() and DescribeBlock#xdescribe()', ({ it }) => {
         });
         const testInterface = parent.createInterface();
 
-        const block = sinon.spy();
+        const block = spy();
         testInterface.xdescribe('child', block);
 
         assertEqual(1, parent.childBlocks.length);
