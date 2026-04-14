@@ -1,9 +1,10 @@
 {
     "name": "kixx-test",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "description": "A lightweight framework for writing automated tests in JavaScript environments.",
     "type": "module",
-    "main": "mod.js",
+    "exports": "./mod.js",
+    "main": "./mod.js",
     "engines": {
         "node": ">=16.13.2"
     },
