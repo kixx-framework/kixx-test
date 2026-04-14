@@ -1,37 +1,31 @@
 {
-  "name": "kixx-test",
-  "version": "2.1.0",
-  "description": "A limited framework for scripting tests in JavaScript environments",
-  "type": "module",
-  "main": "mod.js",
-  "engines": {
-    "node": ">=16.13.2"
-  },
-  "scripts": {
-    "test": "eslint ./ && node ./test/run-tests.js",
-    "lint": "eslint ./"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kixxauth/kixx-test.git"
-  },
-  "files": [
-    "lib/",
-    "mod.js"
-  ],
-  "devDependencies": {
-    "@eslint/js": "9.27.0",
-    "eslint": "9.27.0",
-    "kixx-assert": "2.0.1",
-    "sinon": "20.0.0"
-  },
-  "keywords": [
-    "testing"
-  ],
-  "author": "Kris Walker (www.kriswalker.me)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kixxauth/kixx-test/issues"
-  },
-  "homepage": "https://github.com/kixxauth/kixx-test#readme"
+    "name": "kixx-test",
+    "version": "2.1.0",
+    "description": "A lightweight framework for writing automated tests in JavaScript environments.",
+    "type": "module",
+    "main": "mod.js",
+    "engines": {
+        "node": ">=16.13.2"
+    },
+    "scripts": {
+        "test": "node lint.js && node ./test/run-tests.js"
+    },
+    "homepage": "https://www.kixx.dev/",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kixx-framework/kixx-test.git"
+    },
+    "bugs": {
+        "url": "https://github.com/kixx-framework/kixx-test/issues"
+    },
+    "author": "Kris Walker (www.kriswalker.me)",
+    "license": "MIT",
+    "files": [
+        "lib/",
+        "mod.js"
+    ],
+    "keywords": [
+        "kixx",
+        "testing"
+    ]
 }

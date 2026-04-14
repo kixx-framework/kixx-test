@@ -1,0 +1,26 @@
+{
+    "name": "@kixx/test",
+    "version": "2.1.1",
+    "license": "MIT",
+    "exports": "./mod.js",
+    "publish": {
+        "include": [
+            "lib/",
+            "LICENSE",
+            "mod.js",
+            "README.md"
+        ]
+    }
+    "lint": {
+        "exclude": [
+            ".claude/",
+            "tmp/",
+            "vendor/"
+        ],
+        "rules": {
+            "exclude": [
+                "no-slow-types"
+            ]
+        }
+    }
+}
