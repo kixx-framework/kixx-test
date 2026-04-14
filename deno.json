@@ -19,7 +19,8 @@
         ],
         "rules": {
             "exclude": [
-                "no-slow-types"
+                "no-slow-types",
+                "no-this-alias"
             ]
         }
     }

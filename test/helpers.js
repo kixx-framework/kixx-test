@@ -9,7 +9,7 @@ export function assertThrows(fn, message) {
             throw new AssertionError(
                 `Expected to throw an error with message "${ message }", but got "${ error.message }"`,
                 {},
-                assertThrows
+                assertThrows,
             );
         }
         return;
