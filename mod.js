@@ -2,6 +2,7 @@ import ProgrammerError from './lib/programmer-error.js';
 import { DEFAULT_TIMEOUT } from './lib/constants.js';
 import DescribeBlock from './lib/describe-block.js';
 import EventEmitter from './lib/event-emitter.js';
+export { default as MockTracker } from './lib/mock-tracker.js';
 
 export const _rootBlocks = [];
 let _runCalled = false;
