@@ -77,14 +77,13 @@ JavaScript development often involves complex data structures. Be specific about
  * @property {string} id - Unique user identifier
  * @property {string} email - User's email address
  * @property {string[]} roles - Array of role names
- * @property {function(String): Boolean} hasPermission - Check to see if the user has the given permission
  */
 
 /**
- * @param {UserProfile|null} user - User object or null if not found
- * @returns {Promise<boolean>} True if user has admin privileges
+ * @param {String} id - The UUID for the user.
+ * @returns {UserProfile} The full UserProfile object.
  */
-function userHasAdminPrivileges(user) {
+function getUser(id) {
 }
 ```
 
@@ -108,7 +107,7 @@ export default class ApplicationContext {
 
 Only include the JSDoc import path to a type definition like `import('../config/config.js').default` if you can positively locate the file path. If the file path cannot be located, just use the name; like `Config` in the case above.
 
-For method or function options, use the dotted `@param` notation instead of a `@typedef`:
+Use dotted `@param` notation for function and method arguments/options. For this project, do not introduce a `@typedef` just to describe an `options` argument shape; document it inline with dotted params instead:
 
 ```javascript
 /**
@@ -117,7 +116,17 @@ For method or function options, use the dotted `@param` notation instead of a `@
  * @param {Config} options.config - Application configuration manager instance
  * @param {Logger} options.logger - Logger instance for application logging
  */
-constructor({ runtime, config, logger }) {}
+createContext({ runtime, config, logger }) {}
+```
+
+```javascript
+/**
+ * @param {Object} [options]
+ * @param {boolean} [options.getter=false]
+ * @param {boolean} [options.setter=false]
+ * @param {number} [options.times]
+ */
+function method(options) {}
 ```
 
 ### Document Error Conditions and Edge Cases
