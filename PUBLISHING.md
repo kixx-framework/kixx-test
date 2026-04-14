@@ -3,7 +3,7 @@ Agents: DO NOT attempt to publish this project. The publishing function is a man
 Publishing Checklist
 --------------------
 
-1. Run linting and tests with `npm test`.
+1. Run linting and tests with `npm test` and `deno run --allow-read test/run-tests.js`.
 2. Run the deno check with `deno lint`.
 3. Check the documentation with `deno doc mod.js`.
 4. Ensure the version number in package.json and deno.json is correct. Double check the other metadata while you're at it.
